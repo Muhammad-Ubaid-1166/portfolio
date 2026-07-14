@@ -23,7 +23,7 @@ const infoCards = [
     icon: Target,
     label: 'Goal',
     value: 'Full Stack Ai Engineer',
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-blue-600 to-blue-400',
   },
   {
     icon: MapPin,
@@ -133,7 +133,7 @@ export function AboutSection() {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-purple-500 to-pink-500" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-blue-500 to-cyan-500" />
 
             {timeline.map((item, index) => (
               <motion.div

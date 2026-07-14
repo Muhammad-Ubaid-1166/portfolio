@@ -122,9 +122,9 @@ export function CustomCursor() {
         >
           {/* Inner dot */}
           <div 
-            className="w-3 h-3 rounded-full bg-violet-500"
+            className="w-3 h-3 rounded-full bg-blue-500"
             style={{
-              boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)',
+              boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
             }}
           />
         </motion.div>
@@ -152,9 +152,9 @@ export function CustomCursor() {
           className="relative -translate-x-1/2 -translate-y-1/2"
         >
           <div 
-            className="w-8 h-8 rounded-full border-2 border-violet-400"
+            className="w-8 h-8 rounded-full border-2 border-blue-400"
             style={{
-              boxShadow: '0 0 12px rgba(139, 92, 246, 0.25)',
+              boxShadow: '0 0 12px rgba(37, 99, 235, 0.25)',
             }}
           />
         </motion.div>

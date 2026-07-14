@@ -2,6 +2,11 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { ChatMessage } from '@/types/portfolio';
 
+function getReducedMotion(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 interface PortfolioState {
   // Theme
   theme: 'dark' | 'light';
@@ -24,6 +29,7 @@ interface PortfolioState {
   // UI State
   isMobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
+  reducedMotion: boolean;
 }
 
 export const usePortfolioStore = create<PortfolioState>()(
@@ -54,6 +60,7 @@ export const usePortfolioStore = create<PortfolioState>()(
       // UI State
       isMobileMenuOpen: false,
       setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
+      reducedMotion: false,
     }),
     {
       name: 'portfolio-storage',

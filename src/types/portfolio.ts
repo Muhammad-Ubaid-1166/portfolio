@@ -26,6 +26,7 @@ export interface SocialLink {
 export interface Skill {
   name: string;
   category: SkillCategory;
+  level?: number;
 }
 
 export type SkillCategory = 
@@ -53,6 +54,8 @@ export interface Project {
   imageUrl?: string;
   demoUrl?: string;
   githubUrl?: string;
+  frontendGithubUrl?: string;
+  backendGithubUrl?: string;
   highlights: string[];
   architecture?: string;
   date: string;
@@ -98,6 +101,15 @@ export interface Certification {
   imageUrl?: string;
 }
 
+export interface CertificateImage {
+  id: string;
+  title: string;
+  image: string;
+  issuer: string;
+  date: string;
+  description: string;
+}
+
 export interface TimelineEvent {
   id: string;
   year: string;
@@ -122,5 +134,6 @@ export interface PortfolioConfig {
   education: Education[];
   experience: Experience[];
   certifications: Certification[];
+  certificates: CertificateImage[];
   timeline: TimelineEvent[];
 }

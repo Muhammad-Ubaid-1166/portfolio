@@ -6,9 +6,12 @@ import { ArrowUp } from 'lucide-react';
 import { Navigation } from '@/components/portfolio/navigation';
 import { HeroSection } from '@/components/portfolio/hero-section';
 import { SkillsSection } from '@/components/portfolio/skills-section';
+import { ProjectsSection } from '@/components/portfolio/projects-section';
+import { CertificatesSection } from '@/components/portfolio/certificates-section';
 import { ContactSection } from '@/components/portfolio/contact-section';
 import { Footer } from '@/components/portfolio/footer';
 import { ChatWidget } from '@/components/chat/chat-widget';
+import { CustomCursor } from '@/components/ui/custom-cursor';
 import { usePortfolioStore } from '@/lib/store';
 
 export default function PortfolioPage() {
@@ -19,7 +22,7 @@ export default function PortfolioPage() {
     <main className="relative min-h-screen flex flex-col page-fade-in">
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-cyan-500 to-violet-500 origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 origin-left z-[100]"
         style={{ scaleX }}
       />
 
@@ -33,6 +36,8 @@ export default function PortfolioPage() {
       <div className="flex-1">
         <HeroSection />
         <SkillsSection />
+        <ProjectsSection />
+        <CertificatesSection />
         <ContactSection />
       </div>
 
@@ -44,6 +49,9 @@ export default function PortfolioPage() {
 
       {/* Floating Chat Button (when closed) */}
       <FloatingChatButton />
+
+      {/* Custom Cursor */}
+      <CustomCursor />
 
       {/* Scroll to Top Button - Positioned in the CENTER */}
       <ScrollToTopButton />
@@ -64,9 +72,9 @@ function FloatingChatButton() {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => setChatOpen(true)}
-      className="fixed bottom-20 right-6 w-14 h-14 rounded-full bg-gradient-to-br from-violet-600 to-cyan-600 text-white shadow-lg flex items-center justify-center z-40 cursor-pointer"
+      className="fixed bottom-20 right-6 w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-lg flex items-center justify-center z-40 cursor-pointer"
       style={{
-        boxShadow: '0 0 30px rgba(124, 58, 237, 0.4)',
+        boxShadow: '0 0 30px rgba(37, 99, 235, 0.4)',
       }}
       aria-label="Open chat"
     >

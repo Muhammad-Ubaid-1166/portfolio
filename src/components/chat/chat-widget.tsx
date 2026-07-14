@@ -21,14 +21,12 @@ export function ChatWidget() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Focus input when chat opens
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isChatOpen]);
 
-  // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -58,7 +56,6 @@ export function ChatWidget() {
 
       const data = await response.json();
 
-      // Handle rate limit errors
       if (response.status === 429 || data.error?.includes('busy') || data.error?.includes('rate')) {
         const retryMessage: ChatMessage = {
           id: (Date.now() + 1).toString(),
@@ -101,65 +98,59 @@ export function ChatWidget() {
     <AnimatePresence>
       {isChatOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setChatOpen(false)}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-50"
+            style={{ background: 'rgba(10, 10, 15, 0.85)', backdropFilter: 'blur(8px)' }}
           />
 
-          {/* Chat Window */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-4 right-4 w-[95vw] max-w-md h-[70vh] max-h-[600px] z-50 flex flex-col rounded-2xl glass border overflow-hidden shadow-2xl"
+            className="fixed bottom-4 right-4 w-[95vw] max-w-md h-[70vh] max-h-[600px] z-50 flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+            style={{
+              background: 'rgba(18, 18, 25, 0.95)',
+              border: '1px solid rgba(37, 99, 235, 0.15)',
+              backdropFilter: 'blur(24px)',
+            }}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border shrink-0">
+            <div className="flex items-center justify-between p-4 shrink-0" style={{ borderBottom: '1px solid rgba(37, 99, 235, 0.1)' }}>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #2563eb, #3b82f6)' }}>
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">AI Assistant</h3>
-                  <p className="text-xs text-muted-foreground">Ask me anything about Muhammad</p>
+                  <h3 className="font-semibold text-white/90">AI Assistant</h3>
+                  <p className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>Ask me anything about Muhammad</p>
                 </div>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setChatOpen(false)}
-                className="shrink-0 cursor-pointer"
-              >
+              <Button variant="ghost" size="icon" onClick={() => setChatOpen(false)} className="shrink-0 cursor-pointer text-white/40 hover:text-white/80">
                 <X className="w-5 h-5" />
               </Button>
             </div>
 
-            {/* Messages - Scrollable Area */}
-            <div
-              ref={scrollContainerRef}
-              className="flex-1 overflow-y-auto overflow-x-hidden p-4 hide-scrollbar"
-            >
+            <div ref={scrollContainerRef} className="flex-1 overflow-y-auto overflow-x-hidden p-4 hide-scrollbar">
               {chatMessages.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center py-8">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', delay: 0.2 }}
-                    className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center mb-4"
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                    style={{ background: 'linear-gradient(135deg, #2563eb, #3b82f6)' }}
                   >
                     <Sparkles className="w-8 h-8 text-white" />
                   </motion.div>
-                  <h4 className="font-semibold mb-2">Hi there! 👋</h4>
-                  <p className="text-sm text-muted-foreground mb-6">
+                  <h4 className="font-semibold mb-2 text-white/90">Hi there! 👋</h4>
+                  <p className="text-sm mb-6" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
                     I&apos;m Muhammad&apos;s AI assistant. Ask me anything about his skills, projects, or experience!
                   </p>
 
-                  {/* Suggested Questions */}
                   <div className="w-full space-y-2 px-2">
                     {suggestedQuestions.map((question, index) => (
                       <motion.button
@@ -168,7 +159,14 @@ export function ChatWidget() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + index * 0.1 }}
                         onClick={() => sendMessage(question)}
-                        className="w-full p-3 text-left text-sm rounded-xl glass hover:bg-primary/10 transition-colors cursor-pointer"
+                        className="w-full p-3 text-left text-sm rounded-xl cursor-pointer transition-colors"
+                        style={{
+                          background: 'rgba(37, 99, 235, 0.06)',
+                          border: '1px solid rgba(37, 99, 235, 0.1)',
+                          color: 'rgba(255, 255, 255, 0.6)',
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(37, 99, 235, 0.12)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(37, 99, 235, 0.06)'; }}
                       >
                         {question}
                       </motion.button>
@@ -183,21 +181,19 @@ export function ChatWidget() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.03 }}
-                      className={cn(
-                        'flex gap-3',
-                        message.role === 'user' && 'flex-row-reverse'
-                      )}
+                      className={cn('flex gap-3', message.role === 'user' && 'flex-row-reverse')}
                     >
                       <div
                         className={cn(
                           'w-8 h-8 rounded-full flex items-center justify-center shrink-0',
                           message.role === 'user'
-                            ? 'bg-primary'
-                            : 'bg-gradient-to-br from-primary to-purple-500'
+                            ? 'bg-blue-600'
+                            : ''
                         )}
+                        style={message.role === 'assistant' ? { background: 'linear-gradient(135deg, #2563eb, #3b82f6)' } : {}}
                       >
                         {message.role === 'user' ? (
-                          <User className="w-4 h-4 text-primary-foreground" />
+                          <User className="w-4 h-4 text-white" />
                         ) : (
                           <Bot className="w-4 h-4 text-white" />
                         )}
@@ -206,55 +202,57 @@ export function ChatWidget() {
                         className={cn(
                           'max-w-[80%] p-3 rounded-2xl text-sm',
                           message.role === 'user'
-                            ? 'bg-primary text-primary-foreground rounded-br-md'
-                            : 'glass rounded-bl-md'
+                            ? 'rounded-br-md text-white'
+                            : 'rounded-bl-md'
                         )}
+                        style={
+                          message.role === 'user'
+                            ? { background: 'linear-gradient(135deg, #2563eb, #1d4ed8)' }
+                            : {
+                                background: 'rgba(37, 99, 235, 0.06)',
+                                border: '1px solid rgba(37, 99, 235, 0.1)',
+                                color: 'rgba(255, 255, 255, 0.8)',
+                              }
+                        }
                       >
                         <p className="whitespace-pre-wrap break-words">{message.content}</p>
                       </div>
                     </motion.div>
                   ))}
 
-                  {/* Typing Indicator */}
                   {isTyping && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex gap-3"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center shrink-0">
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex gap-3">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #2563eb, #3b82f6)' }}>
                         <Bot className="w-4 h-4 text-white" />
                       </div>
-                      <div className="glass p-3 rounded-2xl rounded-bl-md">
+                      <div
+                        className="p-3 rounded-2xl rounded-bl-md"
+                        style={{
+                          background: 'rgba(37, 99, 235, 0.06)',
+                          border: '1px solid rgba(37, 99, 235, 0.1)',
+                        }}
+                      >
                         <div className="flex gap-1">
-                          <motion.span
-                            animate={{ opacity: [0.4, 1, 0.4] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0 }}
-                            className="w-2 h-2 rounded-full bg-primary"
-                          />
-                          <motion.span
-                            animate={{ opacity: [0.4, 1, 0.4] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                            className="w-2 h-2 rounded-full bg-primary"
-                          />
-                          <motion.span
-                            animate={{ opacity: [0.4, 1, 0.4] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                            className="w-2 h-2 rounded-full bg-primary"
-                          />
+                          {[0, 0.2, 0.4].map((delay) => (
+                            <motion.span
+                              key={delay}
+                              animate={{ opacity: [0.4, 1, 0.4] }}
+                              transition={{ duration: 1, repeat: Infinity, delay }}
+                              className="w-2 h-2 rounded-full"
+                              style={{ background: 'rgba(37, 99, 235, 0.6)' }}
+                            />
+                          ))}
                         </div>
                       </div>
                     </motion.div>
                   )}
 
-                  {/* Scroll anchor */}
                   <div ref={messagesEndRef} />
                 </div>
               )}
             </div>
 
-            {/* Input */}
-            <form onSubmit={handleSubmit} className="p-4 border-t border-border shrink-0">
+            <form onSubmit={handleSubmit} className="p-4 shrink-0" style={{ borderTop: '1px solid rgba(37, 99, 235, 0.1)' }}>
               <div className="flex gap-2">
                 <Input
                   ref={inputRef}
@@ -263,12 +261,18 @@ export function ChatWidget() {
                   placeholder="Ask me anything..."
                   disabled={isTyping}
                   className="flex-1"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    color: 'rgba(255, 255, 255, 0.8)',
+                  }}
                 />
                 <Button
                   type="submit"
                   size="icon"
                   disabled={!input.trim() || isTyping}
-                  className="shrink-0 cursor-pointer"
+                  className="shrink-0 cursor-pointer border-0 text-white"
+                  style={{ background: 'linear-gradient(135deg, #2563eb, #3b82f6)' }}
                 >
                   {isTyping ? (
                     <Loader2 className="w-4 h-4 animate-spin" />

@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 
-const USER_INFO = `Muhammad Ubaid — AI Agent Developer, first-year CS student (Karachi).
+const USER_INFO = `Muhammad Ubaid — AI Agent Developer, first-year CS student at University of Karachi.
 
-Builds production-ready AI systems using FastAPI, LangChain, LangGraph, OpenAI Agents SDK, and n8n.
+Builds production-ready AI systems using FastAPI, LangChain, LangGraph, OpenAI Agents SDK, Streamlit, and n8n.
 
-Skills: Python, JavaScript, ML, DL, NLP, PostgreSQL, Redis, Docker.
+Projects:
+- Blog Agent: https://blogagent-46jz5ce4woudgltdc5znoo.streamlit.app/
+- RAG Chatbot: https://self-rag-chatbot-8cn4-two.vercel.app/
+- Research App: https://self-rag-chatbot-frontend.vercel.app/
+- Full Stack Auth: http://fullstack-project-frontend-git-main-ubaids-projects-f337c5ce.vercel.app/
 
-Focus: multi-agent systems, AI pipelines, backend + AI integration.
+Skills: Python, JavaScript, TypeScript, SQL, FastAPI, Next.js, LangChain, LangGraph, OpenAI Agents SDK, Streamlit, n8n, RAG, Vector Embeddings, PostgreSQL, Redis, Docker, Linux.
+
+Focus: multi-agent systems, AI pipelines, backend + AI integration, RAG systems.
 
 Goal: Full Stack AI Engineer.
 `;
