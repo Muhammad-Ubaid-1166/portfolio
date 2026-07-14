@@ -50,7 +50,7 @@ That curiosity didn\'t stay theoretical. I\'ve been independently building AI sy
 My focus sits at the intersection of AI/ML research and backend engineering — I care about systems that don\'t just work in a notebook, but actually run in production.
 
 When I\'m not coding, I\'m reading research papers, exploring the latest in deep learning, or pushing the boundaries of what I can build next.`,
-    resume: '/resume.pdf'
+    resume: '/api/download'
   },
 
   socials: [

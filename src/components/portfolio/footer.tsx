@@ -137,8 +137,6 @@ export function Footer() {
             {portfolioData.personal.resume && (
               <motion.a
                 href={portfolioData.personal.resume}
-                target="_blank"
-                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer"
