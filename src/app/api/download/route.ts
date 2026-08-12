@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export async function GET() {
-  const filePath = path.join(process.cwd(), "upload", "Muhammad_Ubaid_CV.docx");
+  const filePath = path.join(process.cwd(), "upload", "Muhammad_Ubaid_CV.pdf");
 
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: "File not found" }, { status: 404 });
@@ -13,9 +13,8 @@ export async function GET() {
 
   return new NextResponse(fileBuffer, {
     headers: {
-      "Content-Type":
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "Content-Disposition": 'attachment; filename="Muhammad_Ubaid_CV.docx"',
+      "Content-Type": "application/pdf",
+      "Content-Disposition": 'attachment; filename="Muhammad_Ubaid_CV.pdf"',
     },
   });
 }

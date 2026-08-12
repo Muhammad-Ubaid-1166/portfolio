@@ -175,6 +175,26 @@ When I\'m not coding, I\'m reading research papers, exploring the latest in deep
       ],
       date: '2025-04',
       status: 'completed'
+    },
+    {
+      id: 'youtube-automation',
+      title: 'YouTube Content Automation Pipeline',
+      description: 'AI-powered pipeline that regenerates YouTube video content end-to-end — rewritten title, description, hashtags, a full script, AI-generated images, and a recreated thumbnail — using a FastAPI + LangGraph multi-agent backend and a Next.js frontend.',
+      longDescription: 'An end-to-end AI pipeline that takes a YouTube video and regenerates all of its content: rewritten title, optimized description, hashtags, a complete script, AI-generated images, and a brand-new thumbnail. Orchestrated by a FastAPI + LangGraph multi-agent backend with a modern Next.js frontend.',
+      techStack: ['FastAPI', 'LangGraph', 'Next.js', 'Multi-Agent AI', 'TypeScript', 'Python'],
+      category: 'ai',
+      featured: true,
+      demoUrl: 'https://fetch-youtueb-data-chatbot-frontend-a0c9m5irt.vercel.app/',
+      frontendGithubUrl: 'https://github.com/Muhammad-Ubaid-1166/fetch_youtueb_data_chatbot_frontend',
+      backendGithubUrl: 'https://github.com/Muhammad-Ubaid-1166/fetch_youtube_data_chatbot_backend',
+      highlights: [
+        'Rewrites video title, description & hashtags',
+        'Full AI-generated script regeneration',
+        'AI-generated images & recreated thumbnail',
+        'FastAPI + LangGraph multi-agent architecture'
+      ],
+      date: '2026-08',
+      status: 'completed'
     }
   ],
 
@@ -340,6 +360,12 @@ His focus sits at the intersection of AI/ML research and backend engineering —
    - Live: http://fullstack-project-frontend-git-main-ubaids-projects-f337c5ce.vercel.app/
    - Frontend Code: https://github.com/Muhammad-Ubaid-1166/fullstack_project_frontend
    - Backend Code: https://github.com/Muhammad-Ubaid-1166/fullstack_project_backend
+
+5. **YouTube Content Automation Pipeline** - AI-powered pipeline that regenerates YouTube video content end-to-end: rewritten title, description, hashtags, full script, AI-generated images, and a recreated thumbnail
+   - Tech: FastAPI + LangGraph multi-agent backend, Next.js frontend
+   - Live: https://fetch-youtueb-data-chatbot-frontend-a0c9m5irt.vercel.app/
+   - Frontend Code: https://github.com/Muhammad-Ubaid-1166/fetch_youtueb_data_chatbot_frontend
+   - Backend Code: https://github.com/Muhammad-Ubaid-1166/fetch_youtube_data_chatbot_backend
 
 ## Education
 - **English Access Scholarship Program (U.S. Embassy)** — Successfully completed the 2-year scholarship program, strengthening my English proficiency, leadership, communication, collaboration, and problem-solving skills.
