@@ -157,26 +157,6 @@ When I\'m not coding, I\'m reading research papers, exploring the latest in deep
       status: 'completed'
     },
     {
-      id: 'fullstack-auth',
-      title: 'Full Stack Auth Project',
-      description: 'A complete authentication system with user management, session handling, and secure API integration.',
-      longDescription: 'A full-stack authentication solution featuring JWT-based auth, OAuth integration, role-based access control, and a modern React frontend with FastAPI backend.',
-      techStack: ['React', 'FastAPI', 'PostgreSQL', 'JWT', 'Docker', 'Redis'],
-      category: 'fullstack',
-      featured: true,
-      demoUrl: 'http://fullstack-project-frontend-git-main-ubaids-projects-f337c5ce.vercel.app/',
-      frontendGithubUrl: 'https://github.com/Muhammad-Ubaid-1166/fullstack_project_frontend',
-      backendGithubUrl: 'https://github.com/Muhammad-Ubaid-1166/fullstack_project_backend',
-      highlights: [
-        'JWT & OAuth authentication',
-        'Role-based access control',
-        'Session management with Redis',
-        'Full-stack React + FastAPI'
-      ],
-      date: '2025-04',
-      status: 'completed'
-    },
-    {
       id: 'youtube-automation',
       title: 'YouTube Content Automation Pipeline',
       description: 'AI-powered pipeline that regenerates YouTube video content end-to-end — rewritten title, description, hashtags, a full script, AI-generated images, and a recreated thumbnail — using a FastAPI + LangGraph multi-agent backend and a Next.js frontend.',
